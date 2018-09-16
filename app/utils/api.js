@@ -1,5 +1,9 @@
 var axios = require('axios');
 
+var id = "0694f6fb93b2d340f207";
+var sec = "d6ed0e6a721535501953d93051808fafa257dc5c";
+var params = "?client_id=" + id + "&client_secret=" + sec;
+
 function getProfile(username) {
   return axios.get('https://api.github.com/users/' + username + params)
     .then(function (user) {
@@ -33,7 +37,7 @@ function getUserData(player) {
   return axios.all([
     getProfile(player),
     getRepos(player)
-  ]).then(function(){
+  ]).then(function(data){
     var profile = data[0];
     var repos = data[1];
 
